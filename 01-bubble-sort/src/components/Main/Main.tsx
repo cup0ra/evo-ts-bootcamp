@@ -20,7 +20,7 @@ interface IState {
 }
 
 export class Main extends React.Component<IProps, IState> {
-  interval!: NodeJS.Timeout;
+  interval!: ReturnType<typeof setInterval>;
 
   constructor(props: IProps) {
     super(props);
@@ -93,10 +93,11 @@ export class Main extends React.Component<IProps, IState> {
         />
         <Board array={arrayCell} />
         <div>
-          <Button name="NEW SET" fn={this.getNewSet} />
+          <Button isSolved={false} name="NEW SET" onClick={this.getNewSet} />
           <Button
+            isSolved={isSolved}
             name={isStep ? 'PAUSE' : 'START'}
-            fn={isStep ? this.clear : this.startSort}
+            onClick={isStep ? this.clear : this.startSort}
           />
         </div>
         <Status status={isSolved} />
