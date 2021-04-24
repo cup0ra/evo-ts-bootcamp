@@ -1,4 +1,5 @@
 import { IBinaryTree, TreeNode, TraverseType } from "../models/tree";
+import { mergeSort } from "./merge-sort";
 
 export class BinaryTree<T> implements IBinaryTree<T> {
   constructor(protected root: TreeNode<T>) {}

@@ -16,3 +16,5 @@ export interface IBinaryTree<T> {
   traverse(traverseType: TraverseType): T[];
   getColumn(columnOrder: number): T[];
 }
+
+export type CompareFunction<T> = (a: T, b: T) => number;
