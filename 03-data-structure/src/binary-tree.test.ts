@@ -1,6 +1,6 @@
 import { BinaryTree } from "./binary-tree";
-import { treeObj } from "./data/treeObject";
-import { TraverseType } from "./models/tree";
+import { treeObj } from "../data/treeObject";
+import { TraverseType } from "../models/tree";
 
 describe("BinaryTree", () => {
   const tree = new BinaryTree(treeObj);

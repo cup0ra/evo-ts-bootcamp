@@ -1,10 +1,7 @@
-import { IBinaryTree, TreeNode, TraverseType } from "./models/tree";
+import { IBinaryTree, TreeNode, TraverseType } from "../models/tree";
 
 export class BinaryTree<T> implements IBinaryTree<T> {
-  private root: TreeNode<T>;
-  constructor(tree: TreeNode<T>) {
-    this.root = tree;
-  }
+  constructor(protected root: TreeNode<T>) {}
 
   setTree(tree: TreeNode<T>): this {
     this.root = tree;
