@@ -1,5 +1,6 @@
+import { treeObj } from "../data/treeObject";
 import { IBinaryTree, TreeNode, TraverseType } from "../models/tree";
-import { mergeSort } from "./merge-sort";
+import { compareFunction, mergeSort } from "./merge-sort";
 
 export class BinaryTree<T> implements IBinaryTree<T> {
   constructor(protected root: TreeNode<T>) {}
@@ -33,15 +34,14 @@ export class BinaryTree<T> implements IBinaryTree<T> {
   private bfs(node: TreeNode<T>): T[] {
     const queue: TreeNode<T>[] = [node];
     let result: T[] = [];
-    while (queue.length) {
-      let curr = queue.shift();
-      if (!curr) return result;
-      result.push(curr.value);
-      if (curr.left) {
-        queue.push(curr.left);
+    while (queue.length !== 0) {
+      const curr = queue.shift();
+      result.push(curr!.value);
+      if (curr!.left) {
+        queue.push(curr!.left);
       }
-      if (curr.right) {
-        queue.push(curr.right);
+      if (curr!.right) {
+        queue.push(curr!.right);
       }
     }
     return result;
@@ -73,6 +73,6 @@ export class BinaryTree<T> implements IBinaryTree<T> {
             ...getColumnValue(node.right, columnNumber + 1),
           ];
     };
-    return getColumnValue(this.root, 0);
+    return mergeSort(getColumnValue(this.root, 0), compareFunction);
   }
 }

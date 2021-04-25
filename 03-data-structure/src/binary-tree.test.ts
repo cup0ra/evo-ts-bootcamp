@@ -4,12 +4,25 @@ import { TraverseType } from "../models/tree";
 
 describe("BinaryTree", () => {
   const tree = new BinaryTree(treeObj);
+  const newTree = {
+    value: 1,
+    left: {
+      value: 2,
+      left: null,
+      right: null,
+    },
+    right: {
+      value: 3,
+      left: null,
+      right: null,
+    },
+  };
   describe("Get column", () => {
     it("column equal 0", () => {
-      expect(tree.getColumn(0)).toEqual([8, 5, 10]);
+      expect(tree.getColumn(0)).toEqual([5, 8, 10]);
     });
     it("column equal 1", () => {
-      expect(tree.getColumn(1)).toEqual([7, 12, 11, 13]);
+      expect(tree.getColumn(1)).toEqual([7, 11, 12, 13]);
     });
     it("column equal 2", () => {
       expect(tree.getColumn(2)).toEqual([14]);
@@ -18,7 +31,7 @@ describe("BinaryTree", () => {
       expect(tree.getColumn(3)).toEqual([15]);
     });
     it("column equal -1", () => {
-      expect(tree.getColumn(-1)).toEqual([4, 3, 6, 9]);
+      expect(tree.getColumn(-1)).toEqual([3, 4, 6, 9]);
     });
     it("column equal -2", () => {
       expect(tree.getColumn(-2)).toEqual([2]);
@@ -103,6 +116,10 @@ describe("BinaryTree", () => {
         13,
         15,
       ]);
+    });
+    it("Set tree", () => {
+      const setTree = new BinaryTree(treeObj);
+      expect(setTree.setTree(newTree)).toEqual(setTree);
     });
   });
 });
