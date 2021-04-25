@@ -13,29 +13,34 @@ export const ContainerImages = ({
     gap: 7px;
     margin: 10px;
   `;
-
-  const Image = styled.img`
+  const ContainerImage = styled.div`
     border-radius: 5px;
-    flex-grow: 1;
-    object-fit: cover;
+    overflow: hidden;
     transition: 0.3s;
     &:hover {
       cursor: pointer;
-      transform: scale(1.005);
+      transform: scale(1.01);
       box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
         0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
     }
+  `;
+  const Image = styled.img`
+    width: 100%;
+    vertical-align: bottom;
   `;
   return (
     <Container>
       {dataImages.map((image) => {
         return (
-          <Image
-            width={image.width / 20}
+          <ContainerImage
             key={image.alt}
-            src={image.url}
-            alt={image.alt}
-          />
+            style={{
+              width: `${(image.width * 200) / image.height}px`,
+              flexGrow: (image.width * 200) / image.height,
+            }}
+          >
+            <Image src={image.url} alt={image.alt} />
+          </ContainerImage>
         );
       })}
     </Container>
