@@ -1,0 +1,36 @@
+.input {
+  -webkit-appearance: none;
+}
+
+.input::-webkit-slider-runnable-track {
+  width: 300px;
+  height: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+}
+
+.input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: rgb(0, 0, 0);
+  margin-top: -5.5px;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input:focus::-webkit-slider-runnable-track {
+  background: #ccc;
+}
+
+.label {
+  margin: 0 20px;
+  span {
+    font-weight: bold;
+  }
+}
