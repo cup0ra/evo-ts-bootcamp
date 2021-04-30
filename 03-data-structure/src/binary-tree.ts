@@ -5,7 +5,7 @@ import { compareFunction, mergeSort } from "./merge-sort";
 export class BinaryTree<T> implements IBinaryTree<T> {
   constructor(protected root: TreeNode<T>) {}
 
-  setTree(tree: TreeNode<T>): this {
+  public setTree(tree: TreeNode<T>): this {
     this.root = tree;
     return this;
   }
@@ -47,7 +47,7 @@ export class BinaryTree<T> implements IBinaryTree<T> {
     return result;
   }
 
-  traverse(traverseType: TraverseType): T[] {
+  public traverse(traverseType: TraverseType): T[] {
     switch (traverseType) {
       case TraverseType.DFS_InOrder:
         return this.inOrder(this.root);
@@ -60,7 +60,7 @@ export class BinaryTree<T> implements IBinaryTree<T> {
     }
   }
 
-  getColumn(columnOrder: number): T[] {
+  public getColumn(columnOrder: number): T[] {
     const getColumnValue = (
       node: TreeNode<T> | null,
       columnNumber: number

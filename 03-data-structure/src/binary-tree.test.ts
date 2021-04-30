@@ -41,81 +41,21 @@ describe("BinaryTree", () => {
     });
   });
   describe("Traverse", () => {
+    const result = [8, 4, 12, 2, 5, 10, 14, 1, 3, 6, 7, 9, 11, 13, 15];
     it("BFS", () => {
-      expect(tree.traverse(TraverseType.BFS)).toEqual([
-        8,
-        4,
-        12,
-        2,
-        5,
-        10,
-        14,
-        1,
-        3,
-        6,
-        7,
-        9,
-        11,
-        13,
-        15,
-      ]);
+      expect(tree.traverse(TraverseType.BFS)).toEqual(result);
     });
     it("DFS inOrder", () => {
-      expect(tree.traverse(TraverseType.DFS_InOrder)).toEqual([
-        1,
-        2,
-        3,
-        4,
-        6,
-        5,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-      ]);
+      const result = [1, 2, 3, 4, 6, 5, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+      expect(tree.traverse(TraverseType.DFS_InOrder)).toEqual(result);
     });
     it("DFS PostOrder", () => {
-      expect(tree.traverse(TraverseType.DFS_PostOrder)).toEqual([
-        1,
-        3,
-        2,
-        6,
-        7,
-        5,
-        4,
-        9,
-        11,
-        10,
-        13,
-        15,
-        14,
-        12,
-        8,
-      ]);
+      const result = [1, 3, 2, 6, 7, 5, 4, 9, 11, 10, 13, 15, 14, 12, 8];
+      expect(tree.traverse(TraverseType.DFS_PostOrder)).toEqual(result);
     });
     it("DFS PreOrder", () => {
-      expect(tree.traverse(TraverseType.DFS_PreOrder)).toEqual([
-        8,
-        4,
-        2,
-        1,
-        3,
-        5,
-        6,
-        7,
-        12,
-        10,
-        9,
-        11,
-        14,
-        13,
-        15,
-      ]);
+      const result = [8, 4, 2, 1, 3, 5, 6, 7, 12, 10, 9, 11, 14, 13, 15];
+      expect(tree.traverse(TraverseType.DFS_PreOrder)).toEqual(result);
     });
     it("Set tree", () => {
       const setTree = new BinaryTree(treeObj);
