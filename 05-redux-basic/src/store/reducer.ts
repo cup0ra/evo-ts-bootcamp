@@ -1,13 +1,5 @@
-import { CREDIT, DEBIT, SET_BALANCE_WITH_TAX, UPDATE_BALANCE } from './actions';
-
-export interface Action {
-  type: string;
-  payload: number;
-}
-
-export interface IState {
-  balance: number;
-}
+import * as types from './types';
+import { IState, ActionType } from './interface';
 
 const initState = {
   balance: 1000,
@@ -15,16 +7,16 @@ const initState = {
 
 export function balanceReducer(
   state: IState = initState,
-  action: Action,
+  action: ActionType<number>,
 ): IState {
   switch (action.type) {
-    case UPDATE_BALANCE:
+    case types.UPDATE_BALANCE:
       return { ...state, balance: action.payload };
-    case CREDIT:
-      return { ...state, balance: state.balance + action.payload };
-    case DEBIT:
+    case types.CREDIT:
       return { ...state, balance: state.balance - action.payload };
-    case SET_BALANCE_WITH_TAX:
+    case types.DEBIT:
+      return { ...state, balance: state.balance + action.payload };
+    case types.SET_BALANCE_WITH_TAX:
       return { ...state, balance: state.balance * (1 - action.payload) };
     default:
       return state;
