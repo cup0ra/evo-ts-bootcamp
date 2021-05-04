@@ -1,5 +1,4 @@
-import React, { FC, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC } from 'react';
 import { Balance } from './components/Balance';
 import {
   addDebit,
@@ -8,33 +7,20 @@ import {
   updateBalance,
 } from './store/actions';
 import './App.css';
-import { ActionType } from './store/interface';
+import { Button } from './components/Button';
 
 const App: FC = () => {
-  const dispatch = useDispatch();
-  const clickButton = useCallback(
-    (click: ActionType<number>) => dispatch(click),
-    [dispatch],
-  );
   return (
     <div className="App">
       <Balance />
       <div>
-        <button type="button" onClick={() => clickButton(getCredit(200))}>
-          CREDIT 200
-        </button>
-        <button type="button" onClick={() => clickButton(addDebit(100))}>
-          DEBIT 100
-        </button>
-        <button
-          type="button"
-          onClick={() => clickButton(setBalanceWithTax(0.14))}
-        >
-          SUBTRACT PERCENTAGE 0.14
-        </button>
-        <button type="button" onClick={() => clickButton(updateBalance(1000))}>
-          UPDATE BALANCE 1000
-        </button>
+        <Button name="CREDIT 200" action={getCredit(200)} />
+        <Button name="DEBIT 100" action={addDebit(100)} />
+        <Button
+          name="SUBTRACT PERCENTAGE 0.14"
+          action={setBalanceWithTax(0.14)}
+        />
+        <Button name="UPDATE BALANCE 1000" action={updateBalance(1000)} />
       </div>
     </div>
   );
